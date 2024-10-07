@@ -44,4 +44,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function solicitudes()
+    {
+        return $this->hasMany(Solicitud::class);
+    }
 }
