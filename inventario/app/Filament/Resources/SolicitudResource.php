@@ -59,7 +59,7 @@ class SolicitudResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\solicitudes::route('/'),
+            'index' => Pages\ListSolicitudes::route('/'),
             'create' => Pages\CreateSolicitud::route('/create'),
             'edit' => Pages\EditSolicitud::route('/{record}/edit'),
         ];

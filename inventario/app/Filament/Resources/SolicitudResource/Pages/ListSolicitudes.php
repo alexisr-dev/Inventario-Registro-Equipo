@@ -6,7 +6,7 @@ use App\Filament\Resources\SolicitudResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class solicitudes extends ListRecords
+class ListSolicitudes extends ListRecords
 {
     protected static string $resource = SolicitudResource::class;
 
