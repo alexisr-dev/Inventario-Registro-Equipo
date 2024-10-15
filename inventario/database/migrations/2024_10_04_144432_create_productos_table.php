@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 100);
             $table->text('descripcion')->nullable();
-            $table->string('imagen')->nullable();
+            $table->string('marca', 50)->nullable(); // Nuevo campo
+            $table->string('modelo', 50)->nullable(); // Nuevo campo
+            $table->string('numero_serie', 50)->nullable();
+            $table->binary('imagen')->nullable();
             $table->foreignId('categoria_id')->constrained('categorias');
             $table->timestamps();
         });
