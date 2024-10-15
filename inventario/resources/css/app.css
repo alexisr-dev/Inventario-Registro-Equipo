@@ -1,0 +1,7 @@
+@import './custom.css'; /* Asegúrate de usar la ruta correcta */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aquí puedes añadir estilos personalizados adicionales */

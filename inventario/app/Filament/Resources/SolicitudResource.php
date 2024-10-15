@@ -19,7 +19,7 @@ class SolicitudResource extends Resource
     protected static ?string $pluralLabel = 'Solicitudes';
     protected static ?string $navigationLabel = 'Solicitudes';
     protected static ?string $slug = 'solicitudes';
-
+  
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

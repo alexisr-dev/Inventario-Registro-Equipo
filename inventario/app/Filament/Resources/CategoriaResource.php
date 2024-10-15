@@ -18,7 +18,9 @@ use Filament\Forms\Components\Toggle;
 class CategoriaResource extends Resource
 {
     protected static ?string $model = Categoria::class;
-
+    protected static ?string $navigationLabel = 'Categoria';
+    protected static ?string $slug = 'Categoria';
+    protected static ?string $pluralLabel = 'Categoria';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

@@ -1,0 +1,8 @@
+/* custom.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-backgroundGreen {
+    background-color: theme('colors.backgroundGreen'); /* Usar la variable de color que configuramos en Tailwind */
+}
