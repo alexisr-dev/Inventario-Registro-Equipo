@@ -7,23 +7,45 @@ use App\Filament\Resources\ProductoResource\RelationManagers;
 use App\Models\Producto;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\FileUpload;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+
 class ProductoResource extends Resource
 {
     protected static ?string $model = Producto::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-cube';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nombre')
+                    ->required()
+                    ->maxLength(100),
+                Forms\Components\Textarea::make('descripcion'),
+                Forms\Components\TextInput::make('marca')
+                    ->maxLength(50)
+                    ->required(),
+                Forms\Components\TextInput::make('modelo')
+                    ->maxLength(50)
+                    ->required(),
+                Forms\Components\TextInput::make('numero_serie')
+                    ->maxLength(50)
+                    ->required(),
+                Forms\Components\FileUpload::make('imagen')
+                 ->image()
+                 -> preserveFilenames()
+                 ->directory('products')
+                ->required(),
+                Forms\Components\Select::make('categoria_id')
+                    ->relationship('categoria', 'nombre')
+                    ->required(),
             ]);
     }
 
@@ -31,13 +53,32 @@ class ProductoResource extends Resource
     {
         return $table
             ->columns([
-                //
-            ])
+                Tables\Columns\ImageColumn::make('imagen'),
+               
+               
+                Tables\Columns\TextColumn::make('nombre')
+                ->sortable()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('marca')
+                ->sortable()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('modelo')
+                ->sortable()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('numero_serie')
+                ->sortable()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('categoria.nombre')
+                ->label('Categoría')->sortable(),
+                
+               ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

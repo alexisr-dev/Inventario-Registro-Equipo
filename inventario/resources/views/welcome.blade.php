@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,3 +11,5 @@
     <h1 class="text-center">Bienvenidoo a mi aplicación</h1>
 </body>
 </html>
+=======
+>>>>>>> fd63e4aab1c9054790667b415c408659641e263c
