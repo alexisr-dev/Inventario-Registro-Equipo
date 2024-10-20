@@ -26,16 +26,69 @@ class InventarioResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('producto_id')
+                ->label('Producto')
+                ->relationship('producto', 'nombre')
+                ->required(),
+                Forms\Components\TextInput::make('marca')
+                    ->maxLength(50)
+                    ->required(),
+                Forms\Components\TextInput::make('modelo')
+                    ->maxLength(50)
+                    ->required(),
+                Forms\Components\TextInput::make('numero_serie')
+                    ->maxLength(50)
+                    ->required(),
+            Forms\Components\Select::make('estado')
+                ->label('Estado')
+                ->options([
+                    'disponible' => 'Disponible',
+                    'en uso' => 'En uso',
+                    'en mantenimiento' => 'En mantenimiento',
+                    'dado de baja' => 'Dado de baja',
+                ])
+                ->required(),
+            Forms\Components\TextInput::make('ubicacion')
+                ->label('Ubicación')
+                ->nullable()
+                ->maxLength(100)
+                ->required(),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
+             
             ->columns([
-                //
-            ])
+                 Tables\Columns\TextColumn::make('producto.nombre')
+                ->label('Producto')
+                ->sortable()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('marca')
+                ->label('Marca')
+                ->sortable()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('modelo')
+                ->label('Modelo')
+                ->sortable()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('numero_serie')
+                ->label('Número de Serie')
+                ->sortable()
+                ->searchable(),
+                
+                Tables\Columns\TextColumn::make('estado')
+               ->label('Estado')
+            ->badge()
+          ->color(fn (string $state): string => match ($state) {
+          'disponible' => 'success',
+        'en uso' => 'warning',
+        'en mantenimiento' => 'secondary',
+        'dado de baja' => 'danger',
+        default => 'gray',
+             })
+                ])
             ->filters([
                 //
             ])

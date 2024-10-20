@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('inventario', function (Blueprint $table) {
             $table->id();
             $table->foreignId('producto_id')->constrained('productos');
-            $table->string('codigo_unico', 50)->unique();
+            $table->string('marca', 50)->nullable(); // Nuevo campo
+            $table->string('modelo', 50)->nullable(); // Nuevo campo
+            $table->string('numero_serie', 50)->nullable();
             $table->enum('estado', ['disponible', 'en uso', 'en mantenimiento', 'dado de baja']);
             $table->string('ubicacion', 100)->nullable();
             $table->timestamps();  

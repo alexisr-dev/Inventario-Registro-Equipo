@@ -29,15 +29,6 @@ class ProductoResource extends Resource
                     ->required()
                     ->maxLength(100),
                 Forms\Components\Textarea::make('descripcion'),
-                Forms\Components\TextInput::make('marca')
-                    ->maxLength(50)
-                    ->required(),
-                Forms\Components\TextInput::make('modelo')
-                    ->maxLength(50)
-                    ->required(),
-                Forms\Components\TextInput::make('numero_serie')
-                    ->maxLength(50)
-                    ->required(),
                 Forms\Components\FileUpload::make('imagen')
                  ->image()
                  -> preserveFilenames()
@@ -57,15 +48,6 @@ class ProductoResource extends Resource
                
                
                 Tables\Columns\TextColumn::make('nombre')
-                ->sortable()
-                ->searchable(),
-                Tables\Columns\TextColumn::make('marca')
-                ->sortable()
-                ->searchable(),
-                Tables\Columns\TextColumn::make('modelo')
-                ->sortable()
-                ->searchable(),
-                Tables\Columns\TextColumn::make('numero_serie')
                 ->sortable()
                 ->searchable(),
                 Tables\Columns\TextColumn::make('categoria.nombre')
