@@ -27,7 +27,12 @@ class DocentePanelProvider extends PanelProvider
             ->path('docente')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+            'danger' => Color::Rose,
+            'gray' => Color::Gray,
+            'info' => Color::Blue,
+            'primary' => Color::Indigo,
+            'success' => Color::Emerald,
+            'warning' => Color::Orange,
             ])
             ->discoverResources(in: app_path('Filament/Docente/Resources'), for: 'App\\Filament\\Docente\\Resources')
             ->discoverPages(in: app_path('Filament/Docente/Pages'), for: 'App\\Filament\\Docente\\Pages')

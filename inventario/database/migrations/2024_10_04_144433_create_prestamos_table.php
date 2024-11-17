@@ -9,11 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    
     public function up(): void
     {
         Schema::create('prestamos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('solicitud_id')->constrained('solicitudes');
+            $table->foreignId('solicitud_id')->constrained('solicitudes')->onDelete('cascade');
             $table->foreignId('id_users')->constrained('users');
             $table->dateTime('fecha_prestamo');
             $table->dateTime('fecha_devolucion_estimada');

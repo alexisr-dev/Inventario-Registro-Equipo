@@ -1,0 +1,9 @@
+body {
+    background-color: #ffffff; /* Fondo claro */
+    color: #374151; /* Texto oscuro */
+}
+
+.filament-header {
+    background-color: #1d4ed8; /* Fondo azul */
+    color: #ffffff; /* Texto blanco */
+}
