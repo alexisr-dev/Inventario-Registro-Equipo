@@ -17,9 +17,15 @@ class Inventario extends Model
         'numero_serie',
         'estado',
         'producto_id',
+        'ubicacion',
     ];
-    public function producto()
-    {
-        return $this->belongsTo(Producto::class);
-    }
+
+    public function detallesPrestamo() { 
+        return $this->hasMany(DetallePrestamo::class);
+     }
+     public function producto()
+     {
+         return $this->belongsTo(Producto::class, 'producto_id');
+     }
+     
 }

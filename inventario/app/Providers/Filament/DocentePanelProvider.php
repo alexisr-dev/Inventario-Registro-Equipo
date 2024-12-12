@@ -24,7 +24,7 @@ class DocentePanelProvider extends PanelProvider
     {
         return $panel
             ->id('docente')
-            ->path('docente')
+            ->path('docente')  
             ->login()
             ->colors([
             'danger' => Color::Rose,
@@ -61,6 +61,7 @@ class DocentePanelProvider extends PanelProvider
             ])
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
-            ]);
+            ])
+            ->databaseNotifications();
     }
 }

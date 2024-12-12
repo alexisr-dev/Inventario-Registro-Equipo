@@ -25,7 +25,7 @@ return [
     ],
 
     'panel_user' => [
-        'enabled' => false,
+        'enabled' => true,
         'name' => 'panel_user',
     ],
 
@@ -77,7 +77,7 @@ return [
     ],
 
     'discovery' => [
-        'discover_all_resources' => true,
+        'discover_all_resources' => false,
         'discover_all_widgets' => false,
         'discover_all_pages' => false,
     ],

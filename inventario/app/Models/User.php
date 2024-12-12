@@ -5,11 +5,16 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 
+/**
+ * @method bool hasAnyRole(array|string $roles)
+ * @method bool hasRole(array|string $roles)
+ */
 
 class User extends Authenticatable 
 {
@@ -22,6 +27,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $guard_name = 'web'; 
     protected $fillable = [
         'name',
         'email',

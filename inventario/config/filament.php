@@ -83,11 +83,7 @@ return [
     | Livewire's standard 200ms delay.
     |
     */
-   'layout' => [
-    'styles' => [
-        asset('css/custom.css'), // Ruta al archivo personalizado
-    ],
-],
+  
     'livewire_loading_delay' => 'default',
 
 ];

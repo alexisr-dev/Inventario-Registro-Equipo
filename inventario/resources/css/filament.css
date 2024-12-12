@@ -1,0 +1,12 @@
+/* resources/css/filament.css */
+@import 'path_to_filament_default_css'; /* Si es necesario importar el CSS predeterminado de Filament */
+
+/* Personaliza el fondo */
+body {
+    background-color: #e3dfda; /* Cambia el fondo al color deseado */
+}
+
+/* Ajusta otros elementos de Filament */
+.filament-main {
+    background-color: #e3dfda;
+}

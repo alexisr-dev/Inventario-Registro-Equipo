@@ -2,16 +2,22 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Pages\ExportInventarios;
 use App\Filament\Resources\InventarioResource\Pages;
 use App\Filament\Resources\InventarioResource\RelationManagers;
 use App\Models\Inventario;
+use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Collection;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class InventarioResource extends Resource
 {
@@ -39,6 +45,9 @@ class InventarioResource extends Resource
                 Forms\Components\TextInput::make('numero_serie')
                     ->maxLength(50)
                     ->required(),
+                    Forms\Components\TextInput::make('ubicacion')
+                    ->maxLength(100)
+                    ->required(),
             Forms\Components\Select::make('estado')
                 ->label('Estado')
                 ->options([
@@ -47,11 +56,6 @@ class InventarioResource extends Resource
                     'en mantenimiento' => 'En mantenimiento',
                     'dado de baja' => 'Dado de baja',
                 ])
-                ->required(),
-            Forms\Components\TextInput::make('ubicacion')
-                ->label('Ubicación')
-                ->nullable()
-                ->maxLength(100)
                 ->required(),
             ]);
     }
@@ -84,7 +88,7 @@ class InventarioResource extends Resource
           ->color(fn (string $state): string => match ($state) {
           'disponible' => 'success',
         'en uso' => 'warning',
-        'en mantenimiento' => 'secondary',
+        'en mantenimiento' =>  'info',
         'dado de baja' => 'danger',
         default => 'gray',
              })
@@ -93,11 +97,20 @@ class InventarioResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+               
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    ExportBulkAction::make()->exports([
+                        ExcelExport::make('table')->fromTable()
+                        ->withFilename('inventario_'.date('Y-m-d') . ' _export')
+                        ->askForFilename()
+                        ->askForWriterType()
+                        ->withWriterType(\Maatwebsite\Excel\Excel::XLSX),
+                        ExcelExport::make('form')->fromForm(),
+                    ])
                 ]),
             ]);
     }
@@ -106,6 +119,7 @@ class InventarioResource extends Resource
     {
         return [
             //
+         
         ];
     }
 
@@ -115,6 +129,7 @@ class InventarioResource extends Resource
             'index' => Pages\ListInventarios::route('/'),
             'create' => Pages\CreateInventario::route('/create'),
             'edit' => Pages\EditInventario::route('/{record}/edit'),
+            
         ];
     }
 }

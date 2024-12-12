@@ -6,12 +6,17 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "bezhansalleh/filament-shield": "^3.2",
+        "barryvdh/laravel-dompdf": "^3.0",
+        "bezhansalleh/filament-panel-switch": "^1.0",
+        "bezhansalleh/filament-shield": "^3.3",
         "filament/filament": "^3.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "pxlrbt/filament-excel": "^2.3",
         "shanerbaner82/panel-roles": "^0.0.3",
-        "spatie/laravel-permission": "^6.9"
+        "spatie/laravel-permission": "^6.10",
+        "symfony/http-client": "^7.1",
+        "symfony/mailgun-mailer": "^7.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
